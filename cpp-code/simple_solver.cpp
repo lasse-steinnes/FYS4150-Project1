@@ -70,11 +70,11 @@ int main(int argc, char *argv[]){
     //Write to file
     ofstream solutionfile;
   solutionfile.open("Results/simplesolution.csv");
-  solutionfile << "x;" << setw(20) << "v_num;" << setw(20)
-              << "u_exact;" <<  "\n"<< endl;
+  solutionfile << "x," << setw(20) << "v_num," << setw(20)
+              << "u_exact," <<  "\n"<< endl;
   for (int i = 0; i < n; ++i){
-          solutionfile <<x[i] <<';' << setw(20) << v_num[i] << ';'
-                       << setw(20) << u_exact[i] << ';'<<"\n"<<endl;
+          solutionfile <<x[i] <<',' << setw(20) << v_num[i] << ','
+                       << setw(20) << u_exact[i] << ','<<"\n"<<endl;
         }
     solutionfile.close();
 
