@@ -47,6 +47,3 @@ def backward_sbtst(u,d,f,n):
     u[n-1] = f[n-1]/d[n-1]
 
     return u
-
-
-#    h_step = (b-a)/(n-1); # not necessary (could have been useful in for loop)
