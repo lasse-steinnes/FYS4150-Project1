@@ -15,13 +15,13 @@ using namespace std;
 double f(double x){
     /*The right handside of the
     differential eqation*/
-    return 200*exp(-20*x);
+    return 100*exp(-10*x);
 }
 
 double exact(double x){
     /*The analytic solution
     of the differential equation*/
-    return 1-(1-exp(-20))*x-exp(-20*x);
+    return 1-(1-exp(-10))*x-exp(-10*x);
 }
 
 int main(int argc, char *argv[]){
@@ -64,7 +64,7 @@ int main(int argc, char *argv[]){
     //Backward substitution:
     v_num[n-1] = rhs[n-1]/d_tilde[n-1];
     for (int k = n-2; k > 0 ; k--){
-        v_num[k-1] = (rhs[k]+v_num[k-1])*(k-1)/double(k);
+        v_num[k-1] = (rhs[k-1]+v_num[k])*(k-1)/double(k);
     }
 
     //Write to file
