@@ -10,7 +10,6 @@ import numpy as np
 """
 Note: To use this code you need to add
 - a, b: solution interval for x param
-- func: source function
 - d_val: Diagonal element values
 - e_val: Non-diagonal value elements
 - n: points
@@ -34,7 +33,7 @@ U_num = backward_sbtst(u,d_new, new_rhs,int(args.n))
 
 
 # plot numerical and analytical against each other
-plt.plot(x,U_num,'-.',label = "numerical")
+plt.plot(x,U_num,'--.',label = "numerical")
 plt.plot(x,u_exact,'--',label = "exact")
 plt.legend()
 plt.show()
