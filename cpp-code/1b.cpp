@@ -92,7 +92,7 @@ int main(int argc, char *argv[]){
 
     //Write to file
     ofstream solutionfile;
-  solutionfile.open("Results/simplesolution.csv");
+  solutionfile.open("Results/1b.csv");
   solutionfile << "step_size," << setw(20) << "x," << setw(20) << "v_num," << setw(20)
               << "u_exact," <<  "\n"<< endl;
   for (int i = 0; i < n; ++i){
