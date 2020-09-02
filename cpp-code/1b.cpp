@@ -45,11 +45,8 @@ int main(int argc, char *argv[]){
     n = number of columns in A and
     d = value of diagonal elements.
     */
-    //int n = readfile("dataread.csv")[2];
     double *d = new double[6];
-    //d = readfile("dataread.csv")[0];
     double *e = new double[6];
-    //e = readfile("dataread.csv")[1];
     int n;
     d, e, n = readfile("dataread.csv");
 
