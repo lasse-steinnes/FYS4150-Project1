@@ -108,10 +108,9 @@ bool test_polynomial(double a_point, double b_point, int n, int d){
     for (int i=0; i<n; i++){
         if (abs(test_num[i]-test_exact[i]) < tol){
             return true;
-        }  
+        }
         else{
-            return false; 
+            return false;
         }
    }
 }
-    

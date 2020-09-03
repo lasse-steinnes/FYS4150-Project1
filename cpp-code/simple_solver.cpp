@@ -63,7 +63,7 @@ int main(int argc, char *argv[]){
 
     //Backward substitution:
     v_num[n-1] = rhs[n-1]/d_tilde[n-1];
-    for (int k = n-2; k > 0 ; k--){
+    for (int k = n-1; k > 0 ; k--){
         v_num[k-1] = (rhs[k-1]+v_num[k])*(k-1)/double(k);
     }
 
