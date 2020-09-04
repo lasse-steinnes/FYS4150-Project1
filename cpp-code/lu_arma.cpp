@@ -55,12 +55,10 @@ for (int i = 0; i < n-1; ++i){
     A(i+1,i) = -1; // Fill in for elemnts below diag
     A(i,i+1) = -1; // Fill in for elements above diag
   }
-cout << A << endl;
 /* Now need to find inverse of A, via LU decomposition */
 vec v_num  = solve(A,rhs);
 
 //Write to file
-cout << v_num << endl;
 ofstream solutionfile;
 solutionfile.open("Results/lu_solution.csv");
 solutionfile << "step_size," << setw(20) << "x," << setw(20) << "v_num," << setw(20)

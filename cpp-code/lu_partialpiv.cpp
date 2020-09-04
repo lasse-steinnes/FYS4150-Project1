@@ -43,7 +43,6 @@ for (int i = 0; i<n; i++){
     x[i+1] = i*h;
     rhs(i) = f(x[i+1])*hh;
     u_exact[i] = exact(x[i+1]);
-    cout << u_exact[i] << endl;
   }
 
 
@@ -64,9 +63,7 @@ Eigen::MatrixXd A_inv =  A.lu().solve(I); // lu solver
 
 v_num = A_inv*rhs;
 
-cout << "Relative error: " << (A*v_num-rhs).norm() / rhs.norm() << endl;
 //Write to file
-cout << v_num << endl;
 ofstream solutionfile;
 solutionfile.open("Results/lu_solution.csv");
 solutionfile << "step_size," << setw(20) << "x," << setw(20) << "v_num," << setw(20)
