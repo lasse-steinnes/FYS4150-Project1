@@ -55,6 +55,7 @@ int main(int argc, char *argv[]){
         u_exact[i] = exact(i*h);
       }
 
+
     //Foward substitution:
     for (int j = 1; j < n; j++){
         d_tilde[j] = (j+1)/double(j);
