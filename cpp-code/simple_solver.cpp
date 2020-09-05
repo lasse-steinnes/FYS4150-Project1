@@ -9,6 +9,9 @@ non-diagonal elements in a tridiagonal matrix
 #include <stdlib.h>
 #include <fstream>
 #include <iomanip>
+#include <sstream>
+#include <string>
+#include <chrono>
 
 using namespace std;
 
@@ -55,7 +58,7 @@ int main(int argc, char *argv[]){
         u_exact[i] = exact(i*h);
       }
 
-
+    auto t1 = std::chrono::high_resolution_clock::now(); //  declare start and final time
     //Foward substitution:
     for (int j = 1; j < n; j++){
         d_tilde[j] = (j+1)/double(j);
@@ -68,14 +71,29 @@ int main(int argc, char *argv[]){
         v_num[k-1] = (rhs[k-1]+v_num[k])*(k-1)/double(k);
     }
 
+    auto t2 = std::chrono::high_resolution_clock::now(); //get final time
+    std::chrono::duration<double, std::milli> time_ms = t2 - t1; //get in milliseconds
+
     //Write to file
+    char *str_full = new char[n + 30];
+    ostringstream size_;
+    size_ << n;
+    string num = size_.str(); //make string of solutionsize
+    string folder("Results/simplesolution"); //Make string of solution size
+    string file_(".csv");
+    string adding = folder + num + file_;
+    std::size_t length =  adding.copy(str_full,adding.length(),0);
+    str_full[length]='\0';
+    cout << "Writing to file \n"<< str_full << endl;
+
     ofstream solutionfile;
-  solutionfile.open("Results/simplesolution.csv");
+  solutionfile.open(str_full);
   solutionfile << "step_size," << setw(20) << "x," << setw(20) << "v_num," << setw(20)
-              << "u_exact," <<  "\n"<< endl;
+              << "u_exact," << setw(20) << "time,"<< "\n"<< endl;
   for (int i = 0; i < n; ++i){
-          solutionfile << h << ',' << setw(20)  <<x[i] <<',' << setw(20) <<
-          v_num[i] << ','<< setw(20) << u_exact[i] << ','<<"\n"<<endl;
+          solutionfile << h << ',' << setw(20)  << x[i] <<',' << setw(20) <<
+          v_num[i] << ','<< setw(20) << u_exact[i] <<
+          ',' << setw(20) << time_ms.count() << ',' <<"\n"<<endl;
         }
     solutionfile.close();
 

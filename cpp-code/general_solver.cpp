@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iomanip>
 #include <string>
+#include <sstream>>
+#include <chrono>
 
 using namespace std;
 
@@ -97,6 +99,7 @@ int main(int argc,char *argv[]){
     double h = (double) (x[-1]-x[0])/(*n-1);
     double hh = h*h;
 
+
     // Initialize
     v_num[0] = v_num[*n] = 0.0;
     for (int i = 0; i<*n; i++){
@@ -105,6 +108,7 @@ int main(int argc,char *argv[]){
         u_exact[i] = exact(i*h);
       }
 
+      auto t1 = std::chrono::high_resolution_clock::now(); //  declare start and final time
     //Foward substitution:
     for (int j = 2; j < *n; j++){
         b_tilde[j] = b_tilde[j] - a_arr[j]*c_arr[j-1]/b_tilde[j-1];
@@ -116,22 +120,41 @@ int main(int argc,char *argv[]){
     for (int k = *n-1; k > 1; k--){
         v_num[k-1] = (rhs[k-1]-c_arr[k-1]*v_num[k])/b_tilde[k-1];
     }
+
+    auto t2 = std::chrono::high_resolution_clock::now(); //get final time
+    std::chrono::duration<double, std::milli> time_ms = t2 - t1; //get in milliseconds
+
     //Write to file
+
+    char *str_full = new char[*n + 30];
+    ostringstream size_;
+    size_ << *n;
+    string num = size_.str(); //make string of solutionsize
+    string folder("Results/generalsolution"); //Make string of solution size
+    string file_(".csv");
+    string adding = folder + num + file_;
+    std::size_t length =  adding.copy(str_full,adding.length(),0);
+    str_full[length]='\0';
+    cout << "Writing to file \n"<< str_full << endl;
+
     ofstream solutionfile;
-  solutionfile.open("Results/generalsolution.csv");
+
+  solutionfile.open(str_full);
   solutionfile << "step_size," << setw(20) << "x," << setw(20) << "v_num," << setw(20)
-              << "u_exact," <<  "\n"<< endl;
+              << "u_exact," << setw(20) << "time,"<< "\n"<< endl;
   for (int i = 0; i < *n; ++i){
           solutionfile << h << ',' << setw(20)  << x[i] <<',' << setw(20) <<
-          v_num[i] << ','<< setw(20) << u_exact[i] << ','<<"\n"<<endl;
+          v_num[i] << ','<< setw(20) << u_exact[i] <<
+          ',' << setw(20) << time_ms.count() << ',' <<"\n"<<endl;
         }
     solutionfile.close();
 
-    delete[] x;
-    delete[] b_tilde;
-    delete[] rhs;
+    //clean memory
     delete[] a_arr;
     delete[] c_arr;
+    delete[] b_tilde;
+    delete[] rhs;
+    delete[] x;
     delete[] v_num;
     delete[] u_exact;
     return 0;
