@@ -141,7 +141,7 @@ int main(int argc,char *argv[]){
 
   solutionfile.open(str_full);
   solutionfile << "step_size," << setw(20) << "x," << setw(20) << "v_num," << setw(20)
-              << "u_exact," << setw(20) << "time"<< "\n"<< endl;
+              << "u_exact," << setw(20) << "time,"<< "\n"<< endl;
   for (int i = 0; i < *n; ++i){
           solutionfile << h << ',' << setw(20)  << x[i] <<',' << setw(20) <<
           v_num[i] << ','<< setw(20) << u_exact[i] <<
