@@ -76,8 +76,8 @@ int main(int argc, char *argv[]){
     string num = str2.str();
 
     ofstream solutionfile;
-    std::string str1 = "Results/simplesolution";
-    std::string str3 = ".csv";
+    string str1 = "Results/simplesolution";
+    string str3 = ".csv";
   solutionfile.open(str1.append(num).append(str3));
   solutionfile << "step_size," << setw(20) << "x," << setw(20) << "v_num," << setw(20)
               << "u_exact," <<  "\n"<< endl;
