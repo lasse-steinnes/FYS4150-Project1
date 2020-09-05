@@ -124,13 +124,6 @@ int main(int argc,char *argv[]){
     auto t2 = std::chrono::high_resolution_clock::now(); //get final time
     std::chrono::duration<double, std::milli> time_ms = t2 - t1; //get in milliseconds
 
-    //clean memory
-    delete[] a_arr;
-    delete[] c_arr;
-    delete[] b_tilde;
-    delete[] rhs;
-
-
     //Write to file
 
     char *str_full = new char[*n + 30];
@@ -156,7 +149,11 @@ int main(int argc,char *argv[]){
         }
     solutionfile.close();
 
-
+    //clean memory
+    delete[] a_arr;
+    delete[] c_arr;
+    delete[] b_tilde;
+    delete[] rhs;
     delete[] x;
     delete[] v_num;
     delete[] u_exact;
