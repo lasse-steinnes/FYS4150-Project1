@@ -35,7 +35,7 @@ int main(int argc,char *argv[]){
         cout << "Now solving u for arrays a, b, c with integer elements given in terminal \n"
         << endl;
         int a = atof(argv[1]);
-        a_val = &a;                       // Access as global by using pointer
+        a_val = &a;                     // Access as global by using pointer
         int b = atof(argv[2]);
         b_val =  &b;
         int c = atof(argv[3]);
@@ -51,7 +51,7 @@ int main(int argc,char *argv[]){
 
         int n = atof(argv[2]); // Or read off from file Need to use pointer here as well
 /* Read off file in folder DATA here: NOT FINISHED!!
-            ifstream  data(filename);
+            ifstream data(filename);
             double *d = new double[6];
             double *e = new double[6];
             int d_val;
@@ -61,7 +61,7 @@ int main(int argc,char *argv[]){
             while(getline(data,line))
             {
                 i ++;
-                stringstream  lineStream(line);
+                stringstream lineStream(line);
                 string        cell;
                 d[i] = d_val;
                 e[i] = e_val;
