@@ -5,16 +5,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import argaparse
+import argparse
 
 ### Read from csv file using panda
-def get_elements():
+def get_elements(filename):
+    '''
     # Creating parser
     parser = argparse.ArgumentParser()
     parser.add_argument('--filename'); args = parser.parse_args();
 
     # create dataframe and get columns as vectors (mesh - arrays)
-    df = pd.read_csv(args.filename)
+    '''
+    df = pd.read_csv(filename)
     print(df.head())
     
     df_step = df.iloc[1,"step_size"]; num_step = df_step.to_numpy()
@@ -65,3 +67,4 @@ def L2(num_step,u_num,u_exact): #
     e = u_num - u_exact # absolute error
     E =  np.sqrt(h*np.sum(e**2)) # Approximation of the L2 norm
     const = E/num_step**2        # Should remain constant with change in step if stable
+    return E, const
