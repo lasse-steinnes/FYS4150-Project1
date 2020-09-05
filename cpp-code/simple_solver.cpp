@@ -9,6 +9,8 @@ non-diagonal elements in a tridiagonal matrix
 #include <stdlib.h>
 #include <fstream>
 #include <iomanip>
+#include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -69,8 +71,14 @@ int main(int argc, char *argv[]){
     }
 
     //Write to file
+    ostringstream str2; //Make string of solution size
+    str2 << n;
+    string num = str2.str();
+
     ofstream solutionfile;
-  solutionfile.open("Results/simplesolution.csv");
+    std::string str1 = "Results/simplesolution";
+    std::string str3 = ".csv";
+  solutionfile.open(str1.append(num).append(str3));
   solutionfile << "step_size," << setw(20) << "x," << setw(20) << "v_num," << setw(20)
               << "u_exact," <<  "\n"<< endl;
   for (int i = 0; i < n; ++i){
