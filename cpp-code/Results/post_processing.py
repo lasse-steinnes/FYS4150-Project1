@@ -9,26 +9,12 @@ import argparse
 
 ### Read from csv file using panda
 def get_elements(filename):
-    '''
-    # Creating parser
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--filename'); args = parser.parse_args();
-
-    # create dataframe and get columns as vectors (mesh - arrays)
-        df = pd.read_csv(filename)
-    print(df.head())
-    
-    df_step = df.iloc[1,"step_size"]; num_step = df_step.to_numpy()
-    df_x = df.loc[:,"x"]; x = df_x.to_numpy()
-    df_num = df.loc[:,"v_num"]; numerical = df_num.to_numpy()
-    df_exact = df.loc[:,"u_exact"]; exact = df_exact.to_numpy()
-
-    return num_step, x, numerical, exact
-    '''
+    """
+    Create dataframe and get columns as vectors (mesh - arrays)
+    """
     df = pd.read_csv(filename)
     af = df.to_numpy()
     adf = af[:,0:5]
-    #print(df.head())
     df_step = df.loc[1,"step_size"]
     num_step = df.shape[0]
     df_x = df.iloc[:,1]
@@ -41,17 +27,19 @@ def get_elements(filename):
     return df_step, num_step, x, numerical, exact
 
 
-def visualize(h, l2,num_step, x, u_num,u_exact, makeplot = True):
+def visualize(h, l2,num_step, x, u_num, u_exact, makeplot = True, save = True):
     """
     Plot the numerical and exact solution
     """
     if makeplot:
         plt.figure()
-        plt.title('Finite Difference solution to Poisson \n (h: {:.5f}, \
-                 L2/h**2:{:.5f})'.format(h,l2))
+        plt.title('Finite Difference solution to Poisson \n (h: {:.5f}, n: {:d}\
+                 L2/h**2:{:.5f})'.format(h,num_step,l2))
         plt.plot(x,u_num,'--.',label = 'numerical')
         plt.plot(x,u_exact,'--', label = 'exact')
         plt.legend()
+        if save:
+            plt.savefig("figs/diff_{:d}.png".format(num_step))
         plt.show()
 
 def rel_error(u_num, u_exact):

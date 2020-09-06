@@ -45,12 +45,12 @@ int main(int argc, char *argv[]){
     double *d_tilde = new double[n+1];
     double *v_num = new double[n+1];
     double *u_exact = new double[n+1];
+
     //Fill arrays
-    x[0] = 0;
-    x[-1] = 1;
+    x[0] = a_point;
+    x[n] = b_point;
     double h = (double) (b_point-a_point)/(n-1);
     double hh = h*h;
-
     // Initialize
     d_tilde[0] = d_tilde[n] = 2;
     v_num[0] = v_num[n] = 0.0;
@@ -77,7 +77,7 @@ int main(int argc, char *argv[]){
     std::chrono::duration<double, std::milli> time_ms = t2 - t1; //get in milliseconds
 
     //Write to file
-    char *str_full = new char[n + 30];
+    char *str_full = new char[30];
     ostringstream size_;
     size_ << n;
     string num = size_.str(); //make string of solutionsize

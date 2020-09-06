@@ -26,7 +26,7 @@ int main(int argc,char *argv[]){
 
     1)  Read off csv file to get the arrays
     a, b and c (a: below diagonal, b - diagonal, c
-    - above diagonal)
+    - above diagonal) and n
 
     2) Give specific input for arrays with same valued elements of length n
     */
@@ -83,8 +83,8 @@ int main(int argc,char *argv[]){
 
     //Fill arrays
     x[0] = 0;
-    x[-1] = 1;
-    double h = (double) (x[-1]-x[0])/(*n-1);
+    x[*n] = 1;
+    double h = (double) (x[*n]-x[0])/(*n-1);
     double hh = h*h;
 
 

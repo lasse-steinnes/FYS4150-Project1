@@ -32,6 +32,7 @@ int main(int argc,char *argv[]){
   /* Takes input
   n = number of columns and rows in matrix A
   */
+  int n = atof(argv[1]);
 
 //Allocating memory for arrays
 double *x = new double[n+1];
@@ -41,8 +42,8 @@ double *u_exact = new double[n];
 
 //Fill arrays
 x[0] = 0;
-x[-1] = 1;
-double h = (double) (x[-1]-x[0])/(n-1);
+x[n] = 1;
+double h = (double) (x[n]-x[0])/(n-1);
 double hh = h*h;
 
 // Initialize
@@ -70,7 +71,7 @@ auto t2 = std::chrono::high_resolution_clock::now(); //get final time
 std::chrono::duration<double, std::milli> time_ms = t2 - t1; //get in milliseconds
 
 //Write to file
-char *str_full = new char[n + 30];
+char *str_full = new char[30];
 ostringstream size_;
 size_ << n;
 string num = size_.str(); //make string of solutionsize

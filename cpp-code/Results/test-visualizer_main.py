@@ -15,7 +15,7 @@ for i in range(len(files)):
         rel_e = rel_error(num, exact)
         print('The relativ error of %s is %.2f.' %(files[i][j], rel_e))
 
-        
+
 plt.plot(n**2, const)
 plt.title('L2')
 plt.xlabel('$h^2$')
