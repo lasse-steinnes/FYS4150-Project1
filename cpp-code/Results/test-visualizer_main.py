@@ -40,7 +40,7 @@ nums = ('simple algo','general algo','lu_arma')
 consts = [const,const2,const3]
 plt.figure()
 for i in range(len(nums)):
-        plt.plot(n**2, consts[i],'--.',label = nums[i])
+        plt.plot(n**2, consts[i],'.',label = nums[i])
 
 plt.title('L2-norm as a function of stepsize $h^{2}$')
 plt.xlabel('$h^2$')
