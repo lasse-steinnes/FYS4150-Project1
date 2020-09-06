@@ -29,6 +29,8 @@ double exact(double x){
 
 int main(int argc, char *argv[]){
     /*get input from command line:
+    a = begin interval [a,b] of x variable
+    b = end interval [a,b] of x variable
     n = number of columns in A and
     d = value of diagonal elements.
     */
@@ -79,7 +81,7 @@ int main(int argc, char *argv[]){
     ostringstream size_;
     size_ << n;
     string num = size_.str(); //make string of solutionsize
-    string folder("Results/simplesolution"); //Make string of solution size
+    string folder("Results/simplesolution");
     string file_(".csv");
     string adding = folder + num + file_;
     std::size_t length =  adding.copy(str_full,adding.length(),0);

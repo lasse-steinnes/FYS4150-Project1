@@ -51,26 +51,13 @@ int main(int argc,char *argv[]){
              << setw(10) << "to get array elements and solve for u \n"
              << endl;
 
-        int n = atof(argv[2]); // Or read off from file Need to use pointer here as well
-/* Read off file in folder DATA here: NOT FINISHED!!
-            ifstream data(filename);
-            double *d = new double[6];
-            double *e = new double[6];
-            int d_val;
-            int e_val;
-            string line;
-            int i = 0;
-            while(getline(data,line))
-            {
-                i ++;
-                stringstream lineStream(line);
-                string        cell;
-                d[i] = d_val;
-                e[i] = e_val;
-            }
-            int n = i;
-            cout << n << endl;
-*/
+        int n = atof(argv[2]);
+        /*
+        Read off file in folder DATA here:
+        The plan was to use stringsream and linestream, however
+        due to time limitations and knowledge of cpp, this will
+        have to wait until another opportunity arises.
+        */
   } else {
         cout << "Wrong usage: takes 4 inputs () or 1 (filename)" <<  endl;
         exit(1);
@@ -93,6 +80,7 @@ int main(int argc,char *argv[]){
             c_arr[i] = *c_val;
         }
       }
+
     //Fill arrays
     x[0] = 0;
     x[-1] = 1;
@@ -130,7 +118,7 @@ int main(int argc,char *argv[]){
     ostringstream size_;
     size_ << *n;
     string num = size_.str(); //make string of solutionsize
-    string folder("Results/generalsolution"); //Make string of solution size
+    string folder("Results/generalsolution");
     string file_(".csv");
     string adding = folder + num + file_;
     std::size_t length =  adding.copy(str_full,adding.length(),0);

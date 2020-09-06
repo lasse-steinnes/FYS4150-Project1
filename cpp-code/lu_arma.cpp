@@ -1,7 +1,9 @@
 /*
-Code for LU-decomposition using library eigen
+Code for solving a differential equation using
+LU-decomposition with library armadillo
 and writing to file
 */
+
 #include <iostream>
 #include <cmath>
 #include <stdlib.h>
@@ -27,8 +29,10 @@ double exact(double x){
 }
 
 int main(int argc,char *argv[]){
-// Solve for x with lu for specific matrix A given below
-int n = atof(argv[1]);
+  /* Takes input
+  n = number of columns and rows in matrix A
+  */
+
 //Allocating memory for arrays
 double *x = new double[n+1];
 vec rhs(n); // original right hand side: source function
@@ -48,8 +52,8 @@ for (int i = 0; i<n; i++){
     u_exact[i] = exact(x[i]);
   }
 
-
-mat A = zeros<mat>(n,n);       // then fill in for the matrix A:
+// Solve for x with lu for specific matrix A given below
+mat A = zeros<mat>(n,n);       // fill in for the matrix A:
 for (int i = 0; i < n; ++i){    //n*n elements,n-1 highest index
     A(i,i) = 2; //diagonal elements
   }
@@ -70,7 +74,7 @@ char *str_full = new char[n + 30];
 ostringstream size_;
 size_ << n;
 string num = size_.str(); //make string of solutionsize
-string folder("Results/lu_arma"); //Make string of solution size
+string folder("Results/lu_arma");
 string file_(".csv");
 string adding = folder + num + file_;
 std::size_t length =  adding.copy(str_full,adding.length(),0);

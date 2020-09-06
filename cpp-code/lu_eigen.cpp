@@ -1,7 +1,9 @@
 /*
-Code for LU-decomposition using library eigen
-and writing to file
+Code for solving a differential equation using
+LU-decomposition with library eigen and writing
+to file
 */
+
 #include <iostream>
 #include <cmath>
 #include <stdlib.h>
@@ -26,7 +28,10 @@ double exact(double x){
 }
 
 int main(int argc,char *argv[]){
-// Solve for x with lu for specific matrix A given below
+/*takes input
+n = number of columns and rows
+*/
+
 int n = atof(argv[1]);
 //Allocating memory for arrays
 double *x = new double[n+1];
@@ -47,7 +52,8 @@ for (int i = 0; i<n; i++){
     u_exact[i] = exact(x[i]);
   }
 
-Eigen::MatrixXd A(n,n);        // then fill in for the matrix A:
+// Solve for x with lu for specific matrix A given below
+Eigen::MatrixXd A(n,n);        // fill in for the matrix A:
 for (int i = 0; i < n; ++i){    //n*n elements,n-1 highest index
     A(i,i) = 2; //diagonal elements
   }
@@ -72,7 +78,7 @@ char *str_full = new char[n + 30];
 ostringstream size_;
 size_ << n;
 string num = size_.str(); //make string of solutionsize
-string folder("Results/lu_eigen"); //Make string of solution size
+string folder("Results/lu_eigen");
 string file_(".csv");
 string adding = folder + num + file_;
 std::size_t length =  adding.copy(str_full,adding.length(),0);
