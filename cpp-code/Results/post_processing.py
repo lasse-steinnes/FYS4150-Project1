@@ -42,7 +42,7 @@ def visualize(h, l2,num_step, x,x_s, u_num, u_exact, makeplot = True, save = Tru
             plt.plot(x,u_num[i],'-.',label = nums[i])
             plt.legend()
         if save:
-            plt.savefig("figs/diff_{:d}.png".format(num_step))
+            plt.savefig("figs/diff_{:d}.pdf".format(num_step))
         plt.show()
 
 def rel_error(u_num, u_exact):
