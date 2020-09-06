@@ -27,17 +27,20 @@ def get_elements(filename):
     return df_step, num_step, x, numerical, exact
 
 
-def visualize(h, l2,num_step, x, u_num, u_exact, makeplot = True, save = True):
+def visualize(h, l2,num_step, x,x_s, u_num, u_exact, makeplot = True, save = True):
     """
     Plot the numerical and exact solution
+    - input l2 and u_num as array or list/tuple (len 3)
     """
     if makeplot:
         plt.figure()
-        plt.title('Finite Difference solution to Poisson \n (h: {:.5f}, n: {:d}\
-                 L2/h**2:{:.5f})'.format(h,num_step,l2))
-        plt.plot(x,u_num,'--.',label = 'numerical')
-        plt.plot(x,u_exact,'--', label = 'exact')
-        plt.legend()
+        plt.title('Finite Difference solution to Poisson \n (h: {:.1e}, n: {:d})\
+        $L2/h^2$:({:.2e}, {:.2e},  {:.2e})'.format(h,num_step,l2[0],l2[1],l2[2]))
+        plt.plot(x_s,u_exact,'-', label = 'exact')
+        for i in range(len(u_num)):
+            nums = ('simple algo','general algo','lu_arma')
+            plt.plot(x,u_num[i],'-.',label = nums[i])
+            plt.legend()
         if save:
             plt.savefig("figs/diff_{:d}.png".format(num_step))
         plt.show()

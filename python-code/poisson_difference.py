@@ -15,7 +15,7 @@ def initializer(a,b,d_val,e_val, n):
     d = np.full((n,1),d_val, dtype = float); # diagonal (2)
     e = np.full((n,1),e_val, dtype = float); e[n-1] = 0;  # non-diagonal (-1)
     x = np.linspace(a,b,n)
-    rhs = (h_step**2)*100*np.exp(-10*x) # do something with this to make array: Use symbolic python
+    rhs = (h_step**2)*100*np.exp(-10*x) #
     u_exact = 1-(1-np.exp(-10))*x-np.exp(-10*x)
     return d, e, rhs, u_exact, x
 
