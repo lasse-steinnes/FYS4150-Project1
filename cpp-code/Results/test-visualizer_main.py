@@ -34,7 +34,7 @@ for i in range(len(files[0])):
         visualize(h ,l2s, int(n[i]), x, x_s, u_num, u_exact)
         for j in range(len(u_num)):
             rel_e = rel_error(u_num[j], exact)
-            print('The relativ error of %s is %.2f.' %(files[j][i], rel_e))
+            print('The relativ error of %s is %.4e.' %(files[j][i], rel_e))
 
 nums = ('simple algo','general algo','lu_arma')
 consts = [const,const2,const3]
@@ -46,5 +46,5 @@ plt.title('L2-norm as a function of stepsize $h^{2}$')
 plt.xlabel('$h^2$')
 plt.ylabel('L2')
 plt.legend()
-
+plt.savefig("figs/L2h_square.png")
 plt.show()
