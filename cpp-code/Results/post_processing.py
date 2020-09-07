@@ -34,7 +34,7 @@ def visualize(h, l2,num_step, x,x_s, u_num, u_exact, makeplot = True, save = Tru
     """
     if makeplot:
         plt.figure()
-        plt.title('Finite Difference solution to Poisson \n (h: {:.1e}, n: {:d})\
+        plt.title('(h: {:.1e}, n: {:d})\
         $L2/h^2$:({:.2e}, {:.2e},  {:.2e})'.format(h,num_step,l2[0],l2[1],l2[2]))
         plt.plot(x_s,u_exact,'-', label = 'exact')
         for i in range(len(u_num)):
