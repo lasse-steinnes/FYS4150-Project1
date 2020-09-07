@@ -52,7 +52,7 @@ def rel_error(u_num, u_exact):
     - u_num: Numerical solution
     - u_exact: Exact solution
     """
-    rel = np.log10(np.abs((u_num[1:9] - u_exact[1:9])/u_exact[1:9]))
+    rel = np.log10(np.abs((u_num[1:-1] - u_exact[1:-1])/u_exact[1:-1]))
     max_rel = rel.max()
     return max_rel
 
