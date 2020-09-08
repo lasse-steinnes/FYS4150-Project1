@@ -40,11 +40,11 @@ nums = ('simple algo','general algo','lu_arma')
 consts = [const,const2,const3]
 plt.figure()
 for i in range(len(nums)):
-        plt.plot(n**2, consts[i],'.',label = nums[i])
+        h = (x[-1] - x[0])/(n-1)
+        plt.plot(h**2, consts[i],'.',label = nums[i])
 
-plt.title('L2-norm as a function of stepsize $h^{2}$')
-plt.xlabel('$h^2$')
-plt.ylabel('L2')
+plt.xlabel('$h^2$', fontsize = 15)
+plt.ylabel('L2', fontsize = 15)
 plt.legend()
-plt.savefig("figs/L2h_square.png")
+plt.savefig("figs/L2h_square.pdf")
 plt.show()
