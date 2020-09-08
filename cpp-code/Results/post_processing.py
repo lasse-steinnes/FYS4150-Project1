@@ -49,6 +49,7 @@ def rel_error(u_num, u_exact):
     """
     Computes the relative error.
     Input:
+    - n: number of points in numerical solution
     - u_num: Numerical solution
     - u_exact: Exact solution
     """

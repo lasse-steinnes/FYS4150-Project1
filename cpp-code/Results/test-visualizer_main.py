@@ -30,11 +30,12 @@ for i in range(len(files[0])):
 
         l2s = [l2,l2_2,l2_3]
         u_num = (num,num2,num3)
+        rel_e = np.zeros((3,3))
 
         visualize(h ,l2s, int(n[i]), x, x_s, u_num, u_exact)
         for j in range(len(u_num)):
-            rel_e = rel_error(u_num[j], exact)
-            print('The relativ error of %s is %.4e.' %(files[j][i], rel_e))
+            rel_e[i,j] = rel_error(u_num[j], exact)
+            print('The relativ error of %s is %.4e.' %(files[j][i], rel_e[i,j]))
 
 nums = ('simple algo','general algo','lu_arma')
 consts = [const,const2,const3]
