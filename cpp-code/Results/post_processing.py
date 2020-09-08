@@ -35,26 +35,29 @@ def visualize(h, l2,num_step, x,x_s, u_num, u_exact, makeplot = True, save = Tru
     if makeplot:
         plt.figure()
         plt.title('(h: {:.1e}, n: {:d})\
-        $L2/h^2$:({:.2e}, {:.2e},  {:.2e})'.format(h,num_step,l2[0],l2[1],l2[2]))
+        $L2/h^2$:({:.2e}, {:.2e},  {:.2e})'.format(h,num_step,l2[0],l2[1],l2[2]), fontsize=12)
         plt.plot(x_s,u_exact,'-', label = 'exact')
         for i in range(len(u_num)):
             nums = ('simple algo','general algo','lu_arma')
             plt.plot(x,u_num[i],'-.',label = nums[i])
-            plt.legend()
+            plt.xlabel('x', fontsize=15)
+            plt.ylabel('v(x)', fontsize=15)
+            plt.legend(fontsize=13)
         if save:
             plt.savefig("figs/diff_{:d}.pdf".format(num_step))
         plt.show()
 
-def rel_error(u_num, u_exact):
+def rel_error(nn ,u_num, u_exact):
     """
     Computes the relative error.
     Input:
     - u_num: Numerical solution
     - u_exact: Exact solution
     """
-    rel = np.log10(np.abs((u_num[1:-1] - u_exact[1:-1])/u_exact[1:-1]))
+    n = int(nn)
+    rel = np.log10(np.abs((u_num[1:n-1] - u_exact[1:n-1])/u_exact[1:n-1]))
     max_rel = rel.max()
-    return max_rel
+    return abs(max_rel)
 
 
 def L2(h,num_step,u_num,u_exact): #
