@@ -35,14 +35,14 @@ def visualize(h, l2,num_step, x,x_s, u_num, u_exact, makeplot = True, save = Tru
     if makeplot:
         plt.figure()
         plt.title('(h: {:.1e}, n: {:d})\
-        $L2/h^2$:({:.2e}, {:.2e},  {:.2e})'.format(h,num_step,l2[0],l2[1],l2[2]), fontsize=12)
+        $L2/h^2$:({:.2e}, {:.2e},  {:.2e})'.format(h,num_step,l2[0],l2[1],l2[2]), fontsize = 12)
         plt.plot(x_s,u_exact,'-', label = 'exact')
         for i in range(len(u_num)):
             nums = ('simple algo','general algo','lu_arma')
             plt.plot(x,u_num[i],'-.',label = nums[i])
-            plt.xlabel('x', fontsize=15)
-            plt.ylabel('v(x)', fontsize=15)
-            plt.legend(fontsize=13)
+            plt.xlabel('x',fontsize = 15)
+            plt.ylabel('v(x)', fontsize = 15)
+            plt.legend(fontsize = 13)
         if save:
             plt.savefig("figs/diff_{:d}.pdf".format(num_step))
         plt.show()
