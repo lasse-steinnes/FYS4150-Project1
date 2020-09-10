@@ -23,7 +23,6 @@ Folders: Overview of programs and their functionality:
   
         general_solver.cpp solves the Poisson equation using a general Thomas algorithm.
   
-  
         lu_arma.cpp  solves the differential equation by use of armadillo library LU-decomposition
         
         lu_eigen.cpp solves the differential equation by use of eigen library LU-decomposition
