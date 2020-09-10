@@ -4,9 +4,7 @@ Git for Project 1 in Computational Physics (FYS4150): Finite difference schemes 
 Folders: Overview of programs and their functionality:
 
 * Report:
-
-
-        The PDF-version of FYS4150: Project 1 and problem description
+The PDF-version of FYS4150: Project 1 and problem description
         
 * python-code: A functional draft of the algorithms to be used in cpp synta
 
