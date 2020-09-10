@@ -43,7 +43,7 @@ double *u_exact = new double[n];
 //Fill arrays
 x[0] = 0;
 x[n] = 1;
-double h = (double) (x[n]-x[0])/(n-1);
+double h = (double) (x[n]-x[0])/(n);
 double hh = h*h;
 
 // Initialize

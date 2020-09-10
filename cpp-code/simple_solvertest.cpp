@@ -47,7 +47,7 @@ double numerical(int a_point, int b_point, int n, int d, double (*f)(double), do
     //Fill arrays
     x[0] = 0;
     x[-1] = 1;
-    double h = (double) (b_point-a_point)/(n-1);
+    double h = (double) (b_point-a_point)/(n);
     double hh = h*h;
     // Initialize
     d_tilde[0] = d_tilde[n] = 2;

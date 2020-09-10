@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
     //Fill arrays
     x[0] = a_point;
     x[n] = b_point;
-    double h = (double) (b_point-a_point)/(n-1);
+    double h = (double) (b_point-a_point)/(n);
     double hh = h*h;
     // Initialize
     d_tilde[0] = d_tilde[n] = 2;
