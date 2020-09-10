@@ -46,9 +46,9 @@ int main(int argc, char *argv[]){
     double *u_exact = new double[n+1];
 
     //Fill arrays
-    x[0] = a_point;
-    x[n] = b_point;
-    double h = (double) (b_point-a_point)/(n-1);
+    x[0] = 0;
+    x[-1] = 1;
+    double h = (double) (b_point-a_point)/(n);
     double hh = h*h;
     // Initialize
     d_tilde[0] = d_tilde[n] = 2;

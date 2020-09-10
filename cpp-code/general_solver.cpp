@@ -84,7 +84,7 @@ int main(int argc,char *argv[]){
     //Fill arrays
     x[0] = 0;
     x[*n] = 1;
-    double h = (double) (x[*n]-x[0])/(*n-1);
+    double h = (double) (x[*n]-x[0])/(*n);
     double hh = h*h;
 
 
